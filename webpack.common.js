@@ -2,26 +2,12 @@ let path = require('path');
 let glob = require('glob');
 let webpack = require('webpack');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let commonChunkPlugin = webpack.optimize.commonChunkPlugin;
 // let HtmlWebpackPlugin = require('html-webpack-plugin');
-let getEntry = function () {
-    let entry = {};
-    //首先我们先读取我们的开发目录
-    glob.sync('./source/**/*.js').forEach(function (name) {
-        var start = name.indexOf('source/') + 7, end = name.length - 3;
-        var n = name.slice(start, end);
-        entry[n] = name
-    });
-    console.log('entry', entry);
-    return entry;
-};
 
 module.exports = {
-    entry: getEntry(),
-    output: {
-        path: path.resolve(__dirname, './public'),
-        publicPath: '/public/',
-        filename: '[name].js'
-    },
+    entry: require('./webpack-configs/entry'),
+    output: require('./webpack-configs/output'),
     resolve: {
         alias: {
             'vue$': './public/static/static/vue/2.3.4/vue.min.js',
@@ -29,11 +15,7 @@ module.exports = {
             'sweetAlert$': './public/static/static/sweetalert/1.1.3/sweetalert.min.js',
         }
     },
-    externals: {
-        jquery: 'window.jQuery||window.$',
-        vue: 'window.Vue',
-        lodash: 'window._'
-    },
+    externals: require('./webpack-configs/externals'),
     module: {
         rules: [
             {
