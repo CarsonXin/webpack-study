@@ -4,10 +4,39 @@ let webpack = require('webpack');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let commonChunkPlugin = webpack.optimize.commonChunkPlugin;
 // let HtmlWebpackPlugin = require('html-webpack-plugin');
+let getEntry = function () {
+    let entry = {};
+    //首先我们先读取我们的开发目录
+    glob.sync('./source/**/*.js').forEach(function (name) {
+        // console.log("name", name);
+        var start = name.indexOf('source/') + 7, end = name.length - 3;
+        var n = name.slice(start, end);
+        // console.log("n start", n);
+        // n = n.slice(0, n.lastIndexOf('/'));/!*不需要这一行*!/
+        // console.log("n end",n);
+        entry[n] = name
+    });
+    //保存各个组件的入口 entry[n] = name;
+    console.log('entry', entry);
+    /**
+     *      entry = {
+     *                'crowd/index' : './source/crowd/index/index.js',
+     *                'index/index' : './source/index/index/index.js'
+     *              }
+     **/
+    //最后返回entry  给 webpack的entry
+    return entry;
+};
 
 module.exports = {
     entry: require('./webpack-configs/entry'),
+    // entry: getEntry(),
     output: require('./webpack-configs/output'),
+    /*output: {
+        path: path.resolve(__dirname, './public'),
+        publicPath: '/public/',
+        filename: '[name].js'
+    },*/
     resolve: {
         alias: {
             'vue$': './public/static/static/vue/2.3.4/vue.min.js',
@@ -73,6 +102,15 @@ module.exports = {
             allChunks: true
         }),
         /*new webpack.optimize.CommonsChunkPlugin()*/
+        /*new webpack.optimize.CommonsChunkPlugin({
+            name: 'webpack-runtime',
+            filename: 'commons/commons/webpack-runtime.[hash].js',
+        }),*/
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'commons',      // 需要注意的是，chunk的name不能相同！！！
+            filename: '[name]/bundle.[chunkhash:8].js',
+            minChunks: 4,
+        })
     ],
     performance: {
         hints: false
