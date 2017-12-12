@@ -50,13 +50,12 @@ module.exports = {
             {
                 test: /\.js$/,
                 // exclude: /node_modules/,
-                exclude(path){
+                exclude(path) {
                     let isNpmModule = !!path.match(/node_modules|public/);
                     return isNpmModule
                 },
                 loader: 'babel-loader', /*这里不能使用'use'*/
                 include: [
-                    // 只去解析运行目录下的 source 和 demo 文件夹
                     path.join(process.cwd(), './source')
                 ],
                 query: {
@@ -107,9 +106,9 @@ module.exports = {
             filename: 'commons/commons/webpack-runtime.[hash].js',
         }),*/
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'commons',      // 需要注意的是，chunk的name不能相同！！！
+            name: 'static/commons',      // 需要注意的是，chunk的name不能相同！！！
             filename: '[name]/bundle.[chunkhash:8].js',
-            minChunks: 4,
+            minChunks: 3,
         })
     ],
     performance: {

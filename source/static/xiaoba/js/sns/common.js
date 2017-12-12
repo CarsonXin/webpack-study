@@ -40,7 +40,7 @@ function getQueryString(name){
 }
 
 function testFunc(name,word){
-    console.log(word+name)
+    console.log(word+","+name)
 }
 
 module.exports = {
