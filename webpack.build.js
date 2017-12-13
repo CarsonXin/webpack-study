@@ -18,5 +18,10 @@ module.exports = merge(common, {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
-    ]
+    ],
+    watchOptions: {
+        aggregateTimeout: 1500,
+        poll: 1000,
+        ignored: [/node_modules/, /public/]
+    }
 });
