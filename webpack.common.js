@@ -10,11 +10,11 @@ module.exports = {
 
     output: require('./webpack-configs/output'),
 
-    resolve: require('/webpack-configs/resolve'),
+    resolve: require('./webpack-configs/resolve'),
 
     externals: require('./webpack-configs/externals'),
 
-    module: require('/webpack-configs/modules'),
+    module: require('./webpack-configs/modules'),
 
     plugins: [
         /*new HtmlWebpackPlugin({}),*/
