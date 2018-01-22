@@ -1,1 +1,1 @@
-webpackJsonp([2],{5:function(e,t,u){"use strict";var n=u(0);(function(e){return e&&e.__esModule?e:{default:e}})(n).default.testFunc("message,","page")}},[5]);
+webpackJsonp([3],{19:function(e,t,u){"use strict";var n=u(0);(function(e){return e&&e.__esModule?e:{default:e}})(n).default.testFunc("message,","page")}},[19]);

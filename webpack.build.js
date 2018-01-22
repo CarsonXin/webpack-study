@@ -17,6 +17,11 @@ module.exports = merge(common, {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'static/commons',      // 需要注意的是，chunk的name不能相同！！！
+            filename: '[name]/bundle.[chunkhash:8].js',
+            minChunks: 3,
         })
     ],
     watchOptions: {

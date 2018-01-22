@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue router</title>
+</head>
+<body>
+
+<div id="index">
+    <div v-for="router in routers" class="router-container">
+        <router-link :to="router.path">{{router.name}}</router-link>
+    </div>
+    <router-link to="/home1">home1</router-link>
+    <router-link to="/home2">home2</router-link>
+    -- {{$route.name}}
+    <router-view></router-view>
+
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>-->
+<script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.core.min.js"></script>
+<script src="/public/static/router/js/index.js"></script>
+</body>
+</html>

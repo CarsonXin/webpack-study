@@ -7,7 +7,7 @@ module.exports = {
             test: /\.js$/,
             // exclude: /node_modules/,
             exclude(path) {
-                let isNpmModule = !!path.match(/node_modules|public/);
+                let isNpmModule = !!path.match(/node_modules|public|bootstrap/);
                 return isNpmModule
             },
             loader: 'babel-loader', /*这里不能使用'use'*/
@@ -37,7 +37,13 @@ module.exports = {
         },
         {
             test: /\.vue$/,
-            loader: "vue-loader"
+            loader: "vue-loader",
+            options: {
+                loaders: {
+                    css: ExtractTextPlugin.extract("css-loader"),
+                    // scss: ExtractTextPlugin.extract('vue-style-loader',"css!postcss!sass")
+                },
+            }
         },
         {
             test: /\.(png|jpg|gif|svg)$/,
@@ -45,6 +51,7 @@ module.exports = {
             options: {
                 name: '[name].[ext]?[hash]'
             }
-        }
+        },
+
     ]
 };

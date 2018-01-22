@@ -3,13 +3,18 @@ body {
   padding: 0;
 }
 
-.flex-row {
+@mixin flex {
+  flex-wrap: wrap;
   display: flex;
+}
+
+.flex-row {
+  @include flex;
   flex-direction: row;
 }
 
 .flex-col {
-  display: flex;
+  @include flex;
   flex-direction: column;
 }
 
@@ -25,4 +30,25 @@ body {
 
 .flex-2 {
   flex: 2
+}
+.flex-3 {
+  flex: 3
+}
+
+@media screen and (max-width: 374px) and (min-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  body {
+    font-size: 16px;
+  }
 }
