@@ -11,11 +11,15 @@
 
 <div id="index">
     <div v-for="router in routers" class="router-container">
-        <router-link :to="router.path">{{router.name}}</router-link>
+        <router-link :to="{name: router.name,params:{pathName : router.name}}">{{router.name}}</router-link>
+        <template v-if="router.children" v-for="child in router.children">
+            | <router-link :to="child.path">{{child.name}}</router-link>
+        </template>
     </div>
-    <router-link to="/home1">home1</router-link>
-    <router-link to="/home2">home2</router-link>
-    -- {{$route.name}}
+    <!--<router-link to="/home1">home1</router-link>-->
+    <!--<router-link to="/home2">home2</router-link>-->
+    <!--&#45;&#45; {{$route.name}}-->
+
     <router-view></router-view>
 
 </div>

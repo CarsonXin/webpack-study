@@ -1,0 +1,28 @@
+.header-container {
+  background: linear-gradient(90deg, #1dbc9c 0%, #34c1ae 50%, #50c9c2 100%);
+  position: relative;
+  height: 3rem;
+  margin-bottom: .5rem;
+  padding: .5rem 1rem;
+  box-sizing: border-box; }
+
+.logo {
+  height: 2rem;
+  width: 2rem; }
+  .logo img {
+    width: 100%; }
+
+.title {
+  /*position: absolute;*/
+  left: 0;
+  right: 0;
+  height: 3rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem; }
+
+.header-option-button {
+  height: 2rem;
+  width: 2rem; }
+
+/*# sourceMappingURL=header.css.map */
