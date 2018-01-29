@@ -5,6 +5,7 @@ import Home1 from '../components/spa-first/home1.vue';
 import Home2 from '../components/spa-first/home2.vue';
 import Discovery from '../components/spa-first/discovery.vue';
 import Msg from '../components/spa-first/msg.vue';
+import Error from '../components/404.vue';
 
 Vue.config.devtools = true;
 Vue.use(Router);
@@ -16,13 +17,13 @@ let routerList = [
         component: Home,
         children: [
             {
-                path: 'home1',
-                name:"Home1",
+                path: 'home1/:p1',
+                name: "Home1",
                 component: Home1,
             },
             {
-                path: 'home2',
-                name:"Home2",
+                path: 'home2/:p1',
+                name: "Home2",
                 component: Home2,
             }
         ]
@@ -36,6 +37,14 @@ let routerList = [
         path: '/msg',
         name: 'msg',
         component: Msg
+    },
+    {
+        path: '/goHome',
+        redirect: '/',
+        name: 'goHome'
+    }, {
+        path: "*",
+        component: Error
     }
 ];
 

@@ -1,6 +1,6 @@
 <template>
     <div class="children-router">
-        message from {{location}} - {{$route.params.p1}}
+        message from {{location}}
     </div>
 </template>
 <script>
@@ -8,7 +8,7 @@
         name: "home2",
         data() {
             return {
-                location: "home1 page"
+                location: "home2 page"
             }
         }
     }
@@ -17,6 +17,6 @@
     .children-router{
         padding: 4px;
         font-size: 14px;
-        color: #888;
+        color: #353535;
     }
 </style>

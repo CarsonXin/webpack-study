@@ -1,6 +1,6 @@
 <template>
     <div class="children-router">
-        message from {{location}} - {{$route.params.p1}}
+        message from {{location}}
     </div>
 </template>
 <script>

@@ -1,38 +1,31 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '../components/spa-mra/spa-mra.vue';
+import Home from '../components/spa-mra/home.vue';
+import Home1 from '../components/spa-mra/home1.vue';
+import Home2 from '../components/spa-mra/home2.vue';
 
-Vue.config.devtools = true;
 Vue.use(Router);
+
 let routerList = [
     {
         path: '/',
         name: 'home',
-        component: Home,
-        children: [
-            {
-                path: 'home1',
-                name: "Home1",
-                component: Home1,
-            },
-            {
-                path: 'home2',
-                name: "Home2",
-                component: Home2,
-            }
-        ]
-    },
-    {
-        path: '/discovery',
-        name: 'discovery',
-        component: Discovery
-    },
-    {
-        path: '/msg',
-        name: 'msg',
-        component: Msg
+        components: {
+            default: Home,
+            left: Home1,
+            right: Home2
+        }
     }
 ];
-export default new Router({
+
+let router = new Router({
     routes: routerList
-})
+});
+
+let mra = new Vue({
+    el: "#app",
+    router,
+    data: {
+        msg: 'hhh'
+    }
+});
